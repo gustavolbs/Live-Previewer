@@ -1,4 +1,5 @@
 const { app, BrowserWindow, globalShortcut, remote } = require("electron");
+const path = require("path");
 
 let win;
 
@@ -13,10 +14,8 @@ function createWindow() {
     },
   });
 
-  win.loadURL(
-    "file:///Users/gustavolbs/PROJETOS/Live%20Preview%20-%20Electron/index.html"
-  );
-  // win.loadFile("index.html");
+  // win.loadURL(path.resolve(__dirname, "index.html"));
+  win.loadFile("index.html");
 }
 
 function toggleDevTools() {
