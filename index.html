@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>Live Previewer</title>
+  </head>
+  <body>
+    <h1>Welcome to<br />Live Previewer</h1>
+
+    <form>
+      <label for="URL">
+        Enter the url to access Previewer
+        <input
+          type="text"
+          name="URL"
+          id="URL"
+          value="http://localhost"
+          placeholder="Digite a URL completa de acesso"
+        />
+      </label>
+
+      <label for="port">
+        Enter the port of website
+        <input
+          type="text"
+          name="port"
+          id="port"
+          value="3000"
+          placeholder="Digite a porta de acesso para a url"
+        />
+        <small>(leave in blank to access 80 port)</small>
+      </label>
+
+      <button type="submit" onclick="myFunction()">Enviar</button>
+    </form>
+
+    <script type="text/javascript" src="./main.js"></script>
+    <script>
+      async function myFunction() {
+        event.preventDefault();
+        var url = document.getElementById("URL").value;
+        var port = document.getElementById("port").value;
+        let connection = "";
+
+        if (port == "") {
+          connection = `${url}`;
+        } else {
+          connection = `${url}:${port}`;
+        }
+
+        const response = await fetch(connection);
+
+        if (response.status === 200) {
+          location = connection;
+        }
+      }
+    </script>
+  </body>
+</html>
